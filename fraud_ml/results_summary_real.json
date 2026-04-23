@@ -1,0 +1,199 @@
+{
+  "dataset_shape": [
+    20000,
+    26
+  ],
+  "fraud_rate": 0.0058,
+  "missing_values": 5880,
+  "train_shape": [
+    16000,
+    28
+  ],
+  "test_shape": [
+    4000,
+    28
+  ],
+  "random_forest_results": [
+    {
+      "model_name": "RF Baseline (No balancing)",
+      "precision": 0.8333333333333334,
+      "recall": 0.21739130434782608,
+      "f1": 0.3448275862068966,
+      "accuracy": 0.99525,
+      "roc_auc": 0.9335636431218637,
+      "confusion_matrix": [
+        [
+          3976,
+          1
+        ],
+        [
+          18,
+          5
+        ]
+      ]
+    },
+    {
+      "model_name": "RF Tuned + class_weight",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.99425,
+      "roc_auc": 0.946835609100152,
+      "confusion_matrix": [
+        [
+          3977,
+          0
+        ],
+        [
+          23,
+          0
+        ]
+      ]
+    },
+    {
+      "model_name": "RF Tuned + SMOTEENN + class_weight",
+      "precision": 0.14285714285714285,
+      "recall": 0.043478260869565216,
+      "f1": 0.06666666666666667,
+      "accuracy": 0.993,
+      "roc_auc": 0.8531447125318405,
+      "confusion_matrix": [
+        [
+          3971,
+          6
+        ],
+        [
+          22,
+          1
+        ]
+      ]
+    },
+    {
+      "model_name": "RF Tuned + SMOTEENN + Calibrated",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.99425,
+      "roc_auc": 0.8490122552502979,
+      "confusion_matrix": [
+        [
+          3977,
+          0
+        ],
+        [
+          23,
+          0
+        ]
+      ]
+    }
+  ],
+  "isolation_forest_results": [
+    {
+      "model_name": "IF Baseline (scaled + threshold tuned)",
+      "precision": 0.020689655172413793,
+      "recall": 0.391304347826087,
+      "f1": 0.039301310043668124,
+      "accuracy": 0.89,
+      "roc_auc": 0.7739502137289415,
+      "confusion_matrix": [
+        [
+          3551,
+          426
+        ],
+        [
+          14,
+          9
+        ]
+      ]
+    },
+    {
+      "model_name": "IF Tuned (contamination=0.0029)",
+      "precision": 0.01601423487544484,
+      "recall": 0.391304347826087,
+      "f1": 0.03076923076923077,
+      "accuracy": 0.85825,
+      "roc_auc": 0.7563599392157078,
+      "confusion_matrix": [
+        [
+          3424,
+          553
+        ],
+        [
+          14,
+          9
+        ]
+      ]
+    }
+  ],
+  "advanced_model_results": [
+    {
+      "model_name": "HistGradientBoosting (Mac-friendly advanced model)",
+      "precision": 0.5,
+      "recall": 0.391304347826087,
+      "f1": 0.43902439024390244,
+      "accuracy": 0.99425,
+      "roc_auc": 0.924085229198325,
+      "confusion_matrix": [
+        [
+          3968,
+          9
+        ],
+        [
+          14,
+          9
+        ]
+      ]
+    }
+  ],
+  "top_feature_importance": [
+    {
+      "feature": "amt",
+      "permutation_f1_drop": 0.5263157894736842
+    },
+    {
+      "feature": "trans_hour",
+      "permutation_f1_drop": 0.38345864661654133
+    },
+    {
+      "feature": "category",
+      "permutation_f1_drop": 0.1157894736842105
+    },
+    {
+      "feature": "unix_time",
+      "permutation_f1_drop": 0.04093567251461988
+    },
+    {
+      "feature": "random_noise_1",
+      "permutation_f1_drop": 0.0382205513784461
+    },
+    {
+      "feature": "cc_num",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "city_pop",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "job",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "dob",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "merch_lat",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "customer_age",
+      "permutation_f1_drop": 0.02631578947368418
+    },
+    {
+      "feature": "street",
+      "permutation_f1_drop": 0.02506265664160401
+    }
+  ],
+  "best_model_by_f1": "HistGradientBoosting (Mac-friendly advanced model)"
+}
