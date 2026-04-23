@@ -1,88 +1,88 @@
 {
   "dataset_shape": [
-    12000,
-    31
+    50000,
+    26
   ],
-  "fraud_rate": 0.01275,
-  "missing_values": 0,
+  "fraud_rate": 0.00578,
+  "missing_values": 14916,
   "train_shape": [
-    9600,
-    30
+    40000,
+    28
   ],
   "test_shape": [
-    2400,
-    30
+    10000,
+    28
   ],
   "random_forest_results": [
     {
       "model_name": "RF Baseline (No balancing)",
-      "precision": 1.0,
-      "recall": 0.03225806451612903,
-      "f1": 0.0625,
-      "accuracy": 0.9875,
-      "roc_auc": 0.7783194215607511,
+      "precision": 0.9285714285714286,
+      "recall": 0.22413793103448276,
+      "f1": 0.3611111111111111,
+      "accuracy": 0.9954,
+      "roc_auc": 0.904555039921198,
       "confusion_matrix": [
         [
-          2369,
-          0
+          9941,
+          1
         ],
         [
-          30,
-          1
+          45,
+          13
         ]
       ]
     },
     {
       "model_name": "RF Tuned + class_weight",
-      "precision": 0.7142857142857143,
-      "recall": 0.16129032258064516,
-      "f1": 0.2631578947368421,
-      "accuracy": 0.9883333333333333,
-      "roc_auc": 0.8140769890657553,
+      "precision": 0.782608695652174,
+      "recall": 0.3103448275862069,
+      "f1": 0.4444444444444444,
+      "accuracy": 0.9955,
+      "roc_auc": 0.9184182048987577,
       "confusion_matrix": [
         [
-          2367,
-          2
+          9937,
+          5
         ],
         [
-          26,
-          5
+          40,
+          18
         ]
       ]
     },
     {
       "model_name": "RF Tuned + SMOTEENN + class_weight",
-      "precision": 1.0,
-      "recall": 0.22580645161290322,
-      "f1": 0.3684210526315789,
-      "accuracy": 0.99,
-      "roc_auc": 0.811299173463691,
+      "precision": 0.09333333333333334,
+      "recall": 0.1206896551724138,
+      "f1": 0.10526315789473684,
+      "accuracy": 0.9881,
+      "roc_auc": 0.8210205398206146,
       "confusion_matrix": [
         [
-          2369,
-          0
+          9874,
+          68
         ],
         [
-          24,
+          51,
           7
         ]
       ]
     },
     {
       "model_name": "RF Tuned + SMOTEENN + Calibrated",
-      "precision": 1.0,
-      "recall": 0.16129032258064516,
-      "f1": 0.2777777777777778,
-      "accuracy": 0.9891666666666666,
-      "roc_auc": 0.8153569629216084,
+      "precision": 0.14432989690721648,
+      "recall": 0.2413793103448276,
+      "f1": 0.18064516129032257,
+      "accuracy": 0.9873,
+      "roc_auc": 0.8322390554873438,
       "confusion_matrix": [
         [
-          2369,
-          0
+          9859,
+          83
         ],
         [
-          26,
-          5
+          44,
+          14
         ]
       ]
     }
@@ -90,37 +90,37 @@
   "isolation_forest_results": [
     {
       "model_name": "IF Baseline (scaled + threshold tuned)",
-      "precision": 0.0136986301369863,
-      "recall": 0.03225806451612903,
-      "f1": 0.019230769230769232,
-      "accuracy": 0.9575,
-      "roc_auc": 0.5594983591824507,
+      "precision": 0.016216216216216217,
+      "recall": 0.05172413793103448,
+      "f1": 0.024691358024691357,
+      "accuracy": 0.9763,
+      "roc_auc": 0.758247837457252,
       "confusion_matrix": [
         [
-          2297,
-          72
+          9760,
+          182
         ],
         [
-          30,
-          1
+          55,
+          3
         ]
       ]
     },
     {
-      "model_name": "IF Tuned (contamination=0.0064)",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "accuracy": 0.98125,
-      "roc_auc": 0.5653807922221163,
+      "model_name": "IF Tuned (contamination=0.0029)",
+      "precision": 0.015625,
+      "recall": 0.017241379310344827,
+      "f1": 0.01639344262295082,
+      "accuracy": 0.988,
+      "roc_auc": 0.745631559597389,
       "confusion_matrix": [
         [
-          2355,
-          14
+          9879,
+          63
         ],
         [
-          31,
-          0
+          57,
+          1
         ]
       ]
     }
@@ -128,70 +128,70 @@
   "advanced_model_results": [
     {
       "model_name": "HistGradientBoosting (Mac-friendly advanced model)",
-      "precision": 0.7222222222222222,
-      "recall": 0.41935483870967744,
-      "f1": 0.5306122448979592,
-      "accuracy": 0.9904166666666666,
-      "roc_auc": 0.8113127902068384,
+      "precision": 0.7857142857142857,
+      "recall": 0.3793103448275862,
+      "f1": 0.5116279069767442,
+      "accuracy": 0.9958,
+      "roc_auc": 0.9192150680845456,
       "confusion_matrix": [
         [
-          2364,
-          5
+          9936,
+          6
         ],
         [
-          18,
-          13
+          36,
+          22
         ]
       ]
     }
   ],
   "top_feature_importance": [
     {
-      "feature": "V15",
-      "permutation_f1_drop": 0.20833333333333334
+      "feature": "amt",
+      "permutation_f1_drop": 0.5
     },
     {
-      "feature": "V11",
-      "permutation_f1_drop": 0.13372093023255816
+      "feature": "trans_hour",
+      "permutation_f1_drop": 0.5
     },
     {
-      "feature": "V6",
-      "permutation_f1_drop": 0.13
+      "feature": "category",
+      "permutation_f1_drop": 0.2142857142857143
     },
     {
-      "feature": "V8",
-      "permutation_f1_drop": 0.07608695652173914
+      "feature": "customer_age",
+      "permutation_f1_drop": 0.16666666666666669
     },
     {
-      "feature": "V29",
-      "permutation_f1_drop": 0.03804347826086957
-    },
-    {
-      "feature": "V1",
+      "feature": "trans_date_trans_time",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V2",
+      "feature": "cc_num",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V3",
+      "feature": "merchant",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V4",
+      "feature": "first",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V5",
+      "feature": "last",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V7",
+      "feature": "gender",
       "permutation_f1_drop": 0.0
     },
     {
-      "feature": "V9",
+      "feature": "street",
+      "permutation_f1_drop": 0.0
+    },
+    {
+      "feature": "city",
       "permutation_f1_drop": 0.0
     }
   ],
