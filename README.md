@@ -55,9 +55,8 @@ The goal is to accurately detect fraud while minimizing false alarms.
 ## ▶️ How to Run
 
 ```bash
-pip install -r fraud_ml/requirements.txt
-python fraud_ml/fraud_pipeline.py --data-path final_dataset.csv --target-col is_fraud
-```
+cd fraud_ml
+python fraud_pipeline.py --data-path ../creditcard.csv --target-col is_fraud --quiet
 
 ---
 
