@@ -1,79 +1,36 @@
-# 💳 Credit Card Fraud Detection System
+## 🏆 Final Models Selected
 
-## 📌 Overview
+After evaluating multiple models, the following two were selected:
 
-This project builds a machine learning pipeline to detect fraudulent credit card transactions using an imbalanced dataset.
+### 1️⃣ Random Forest (Primary Model)
+- Precision: 0.87
+- Recall: 0.46
+- F1-score: 0.60
+- Very low false positives
 
-The system compares multiple models and identifies the best-performing approach.
-
----
-
-## 🎯 Problem Statement
-
-Fraud detection is challenging because fraudulent transactions are very rare compared to normal transactions.
-
-The goal is to accurately detect fraud while minimizing false alarms.
+✅ Best overall balance → used as main model
 
 ---
 
-## 🧠 Models Used
+### 2️⃣ HistGradientBoosting + SMOTE (Secondary Model)
+- Precision: 0.74
+- Recall: 0.50
+- F1-score: 0.59
 
-* Random Forest (baseline + tuned)
-* Isolation Forest (anomaly detection)
-* HistGradientBoosting (advanced model)
-
----
-
-## ⚙️ Techniques Applied
-
-* Missing value handling (SimpleImputer)
-* Feature engineering (time-based features)
-* Class imbalance handling (SMOTEENN)
-* Hyperparameter tuning (RandomizedSearchCV)
-* Model calibration and threshold tuning
+🚀 Better at detecting fraud (higher recall)
 
 ---
 
-## 📊 Evaluation Metrics
+## 🧠 Key Insight
 
-* Precision
-* Recall
-* F1 Score
-* ROC-AUC
-* Confusion Matrix
+- Random Forest → safer (fewer false alarms)  
+- HGB + SMOTE → more aggressive (catches more fraud)  
 
----
+Final model choice depends on business needs.
 
-## 🏆 Results
+## 📊 Final Results
 
-* Random Forest → Strong performance
-* Isolation Forest → Poor performance
-* HistGradientBoosting → ⭐ Best model
-
----
-
-## ▶️ How to Run
-
-```bash
-cd fraud_ml
-python fraud_pipeline.py --data-path ../creditcard.csv --target-col is_fraud --quiet
-
----
-
-## 📁 Output
-
-* `results_summary_real.json` → contains model performance results
-
----
-
-## 🚀 Future Improvements
-
-* Deploy as API using Flask/FastAPI
-* Real-time fraud detection system
-* Deep learning models for improved accuracy
-
----
-
-## 👨‍💻 Author
-
-Nihal
+| Model | Precision | Recall | F1 |
+|------|----------|--------|----|
+| Random Forest | 0.871 | 0.465 | 0.607 |
+| HGB + SMOTE | 0.744 | 0.500 | 0.598 |
