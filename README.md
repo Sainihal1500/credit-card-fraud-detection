@@ -1,59 +1,175 @@
-💳 Credit Card Transaction Anomaly Detection
-🧠 Problem Statement
-Credit card fraud is a major problem for financial institutions and consumers alike. Detecting fraudulent transactions accurately is incredibly challenging because fraud represents a tiny fraction of total transactions (often < 1%). This project aims to build a highly accurate, production-ready machine learning pipeline capable of detecting fraudulent transactions while minimizing false positives, leveraging advanced feature engineering, and evaluating powerful supervised tree ensembles.
+# 🚨 Credit Card Fraud Detection using Machine Learning
 
-📊 Dataset
-The dataset (final_dataset.csv) contains transactional data including:
+## 📌 Overview
 
-Features: Transaction amounts, dates, times, and anonymized merchant/customer data.
-Engineered Features: Transaction velocity (1H/24H windows), Amount deviations from personal means, Geospatial Haversine distance, and Time-based cyclic features.
-Imbalance: Highly imbalanced, with fraud accounting for less than 1% of transactions.
-Note: Ensure the dataset is located in the data/ directory before running the pipeline.
+Credit card fraud is a critical issue in the financial industry, where fraudulent transactions represent only a very small fraction of total transactions but can cause significant losses. Detecting such transactions is challenging due to **extreme class imbalance** and evolving fraud patterns.
 
-🤖 Models Used
-The pipeline utilizes multiple state-of-the-art models for comparison:
+This project builds a **machine learning-based fraud detection system** that identifies suspicious transactions with high precision while minimizing false positives.
 
-Random Forest Classifier (via Pipeline): A robust supervised ensemble model. We addressed the extreme class imbalance by using SMOTE (Synthetic Minority Over-sampling Technique) to synthetically upsample the training data, wrapped in an sklearn Pipeline alongside StandardScaler.
-XGBoost: A gradient boosting classifier that natively handles class imbalance using scale_pos_weight.
-📈 Results & Outputs
-Note: Results may vary slightly depending on cross-validation splits.
+---
 
-Model	Accuracy	Precision	Recall	F1-Score	AUC-ROC
-XGBoost	~0.996	~0.74	~0.71	~0.72	~0.99
-Random Forest	~0.996	~0.73	~0.71	~0.72	~0.98
-Threshold Tuning: Unlike standard implementations, we did not rely on the default 0.5 decision boundary. We optimized the threshold for Random Forest and XGBoost by maximizing the F1-score across a Precision-Recall Curve.
+## 🎯 Objectives
 
-Model Visualizations
-Receiver Operating Characteristic (ROC) Curve Demonstrating the strong discriminative ability of the Random Forest model across different thresholds.
-ROC Curve
-Review
-ROC Curve
+* Detect fraudulent transactions accurately
+* Handle highly imbalanced datasets
+* Reduce false positives (important for real-world usability)
+* Apply feature engineering to improve model performance
 
-Confusion Matrix (Random Forest) Visualizing the trade-off between True Positives (caught fraud) and False Positives (false alarms) after applying the optimized decision threshold.
-Confusion Matrix
-Review
-Confusion Matrix
+---
 
-Top Feature Importances Comparing which features the Random Forest and XGBoost models heavily relied on to identify anomalous transactions. Notice how the engineered features play a massive role.
-Feature Importances
-Review
-Feature Importances
+## 📊 Dataset
 
-🚀 How to Run
-Setup Environment: Ensure you have the required dependencies installed:
+The dataset contains transaction-level information including:
 
-bash
-pip install pandas numpy scikit-learn imbalanced-learn xgboost matplotlib seaborn joblib
-Prepare Data: Create a data directory in the root folder and place your final_dataset.csv inside it.
+* Transaction amount
+* Timestamp and date
+* Customer and merchant-related anonymized features
+* Geographic information (latitude, longitude)
 
-bash
-mkdir -p data
-mv path/to/your/final_dataset.csv data/
-Run the Notebook: You can run anomaly_detection.ipynb cell-by-cell in Jupyter, or execute the entire notebook from the terminal:
+📌 **Note:** Fraud cases typically account for **<1% of total transactions**, making this a highly imbalanced classification problem.
 
-bash
-jupyter nbconvert --to notebook --execute --inplace anomaly_detection.ipynb
-Outputs:
+---
 
-The trained Random Forest Pipeline will be saved to models/random_forest.pkl.
-Feature importances and Confusion Matrix / ROC Curves will be generated and displayed natively in the notebook.
+## ⚙️ Approach
+
+### 🔹 1. Data Preprocessing
+
+* Handling missing values
+* Sorting transactions by time
+* Cleaning and structuring dataset
+
+---
+
+### 🔹 2. Feature Engineering (Key Strength of Project 🚀)
+
+The following advanced features were created:
+
+#### ⏱️ Time-Based Features
+
+* Hour of transaction
+* Day of week
+* Time differences between transactions
+
+#### ⚡ Transaction Velocity
+
+* Number of transactions in:
+
+  * Last 1 hour
+  * Last 24 hours
+
+#### 📈 Behavioral Features
+
+* Deviation of transaction amount from user's average
+* Spending pattern analysis
+
+#### 🌍 Geospatial Feature
+
+* Haversine distance between:
+
+  * Customer location
+  * Merchant location
+
+👉 This helps detect abnormal location-based transactions.
+
+---
+
+### 🔹 3. Models Used
+
+* 🌳 Random Forest (Primary Model)
+* ⚡ XGBoost (Secondary Model)
+* 🌲 Isolation Forest (for anomaly detection)
+
+---
+
+### 🔹 4. Handling Imbalanced Data
+
+* SMOTE / SMOTEENN techniques
+* Threshold tuning instead of default 0.5
+
+---
+
+### 🔹 5. Threshold Optimization (Important Insight 💡)
+
+Instead of using the default classification threshold (0.5),
+the model threshold was optimized (~0.9+) to:
+
+✔ Reduce false positives
+✔ Maintain good recall
+
+👉 This is critical in fraud detection systems.
+
+---
+
+## 🏆 Results
+
+| Model         | Precision | Recall                 | F1 Score | ROC-AUC |
+| ------------- | --------- | ---------------------- | -------- | ------- |
+| Random Forest | High      | Moderate               | Strong   | ~0.99   |
+| XGBoost       | High      | Slightly better recall | Strong   | ~0.99   |
+
+📌 The model achieves **high precision**, ensuring fewer legitimate transactions are flagged incorrectly.
+
+---
+
+## ▶️ How to Run
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Sainihal1500/credit-card-fraud-detection.git
+cd credit-card-fraud-detection
+```
+
+2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the notebook:
+
+```bash
+jupyter notebook task-2.ipynb
+```
+
+---
+
+## 📂 Project Structure
+
+```bash
+credit-card-fraud-detection/
+│
+├── task-2.ipynb      # Main notebook
+├── README.md         # Project documentation
+└── .gitignore
+```
+
+---
+
+## 💡 Key Learnings
+
+* Handling **imbalanced datasets** is critical in real-world ML
+* Feature engineering can significantly outperform raw models
+* Threshold tuning is more impactful than just changing models
+* Fraud detection is more about **precision-recall tradeoff** than accuracy
+
+---
+
+## 🚀 Future Improvements
+
+* Deploy as a **Streamlit web app**
+* Build real-time fraud detection API
+* Add deep learning models
+* Improve feature engineering using sequence modeling
+
+---
+
+## 👨‍💻 Author
+
+**SAI NIHAL**
+
+---
+
+## ⭐ If you found this useful
+
+Give a ⭐ on GitHub and feel free to contribute!
