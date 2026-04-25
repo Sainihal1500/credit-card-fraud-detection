@@ -166,7 +166,7 @@ credit-card-fraud-detection/
 
 ## 👨‍💻 Author
 
-**SAI NIHAL**
+**Nihal**
 
 ---
 
